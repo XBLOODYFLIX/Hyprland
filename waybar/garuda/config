@@ -1,0 +1,141 @@
+{
+    "layer": "top",
+    "position": "top",
+    "height": 40,
+    "margin": "0 5 0 5",
+    "spacing": 6,
+
+    "modules-left": [
+        "custom/launcher",
+        "hyprland/workspaces",
+        "hyprland/window"
+    ],
+
+    "modules-center": [],
+
+    "modules-right": [
+        "cpu",
+        "memory",
+        "pulseaudio",
+        "network",
+        "tray",
+        "idle_inhibitor",
+        "clock",
+        "custom/power"
+    ],
+
+    "custom/launcher": {
+        "format": "  ",
+        "on-click": "wofi --show drun",
+        "tooltip": false
+    },
+
+    "hyprland/workspaces": {
+        "format": "{icon}",
+        "on-click": "activate",
+        "all-outputs": true,
+        "sort-by-number": true,
+        "format-icons": {
+            "1": "1",
+            "2": "2",
+            "3": "3",
+            "4": "4",
+            "5": "5",
+            "6": "6",
+            "7": "7",
+            "8": "8",
+            "9": "9",
+            "10": "10",
+            "focused": "",
+            "default": ""
+        },
+        "on-scroll-up": "hyprctl dispatch workspace e+1",
+        "on-scroll-down": "hyprctl dispatch workspace e-1"
+    },
+
+    "hyprland/window": {
+        "format": "{}",
+        "icon": true,
+        "icon-size": 20,
+        "max-length": 100
+    },
+
+    "cpu": {
+        "format": " {usage}%",
+        "tooltip": true,
+        "on-click": "ghostty -e htop"
+    },
+
+    "memory": {
+        "format": " {: >3}%",
+        "tooltip": true,
+        "on-click": "ghostty -e htop"
+    },
+
+    "pulseaudio": {
+        "scroll-step": 3,
+        "format": "{icon} {volume}% {format_source}",
+        "format-muted": " {format_source}",
+        "format-bluetooth": "{icon} {volume}% {format_source}",
+        "format-bluetooth-muted": " {icon} {format_source}",
+        "format-source": "",
+        "format-source-muted": "",
+        "format-icons": {
+            "headphone": "",
+            "hands-free": "",
+            "headset": "",
+            "phone": "",
+            "portable": "",
+            "car": "",
+            "default": [
+                "",
+                "",
+                ""
+            ]
+        },
+        "on-click": "pavucontrol",
+        "on-click-right": "pavucontrol"
+    },
+
+    "network": {
+        "format": "⚠",
+        "format-wifi": " {essid}",
+        "format-ethernet": "󰈀 {ifname}",
+        "format-linked": "󰈀 {ifname} no IP",
+        "format-disconnected": "⚠ offline",
+        "format-alt": "{ifname}: {ipaddr}/{cidr}",
+        "family": "ipv4",
+        "tooltip-format-wifi": " {ifname} @ {essid}\nIP: {ipaddr}\nStrength: {signalStrength}%\nFreq: {frequency} MHz\nUp: {bandwidthUpBits}\nDown: {bandwidthDownBits}",
+        "tooltip-format-ethernet": "󰈀 {ifname}\nIP: {ipaddr}\nUp: {bandwidthUpBits}\nDown: {bandwidthDownBits}",
+        "on-click": "nm-connection-editor"
+    },
+
+    "tray": {
+        "icon-size": 20,
+        "spacing": 5
+    },
+
+    "idle_inhibitor": {
+        "format": "{icon}",
+        "format-icons": {
+            "activated": "",
+            "deactivated": ""
+        },
+        "tooltip-format-activated": "Idle inhibitor active",
+        "tooltip-format-deactivated": "Idle inhibitor inactive"
+    },
+
+    "clock": {
+        "format": " {:%a %d.%m.  %H:%M}",
+        "format-alt": " {:%d.%m.%Y  %H:%M:%S}",
+        "tooltip-format": "<big>{:%A, %d.%B %Y}</big>\n<tt><small>{calendar}</small></tt>",
+        "interval": 1
+    },
+
+    "custom/power": {
+        "format": "⏻",
+        "tooltip": true,
+        "tooltip-format": "Power menu",
+        "on-click": "~/.config/hypr/scripts/powermenu.sh"
+    }
+}
