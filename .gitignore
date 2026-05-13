@@ -1,3 +1,11 @@
-
 # Local backup files
 *.bak
+*.bak.*
+
+# Editor swap files
+*.swp
+*.swo
+*~
+
+# Logs
+*.log
